@@ -39,9 +39,15 @@ const Signage = () => {
     }
   }, [currentSlideIndex, slides]);
 
-  const nextSlide = () => {
-    setCurrentSlideIndex((prev) => (prev + 1) % slides.length);
-  };
+  useEffect(() => {
+    if (slides.length > 0) {
+      const slide = slides[currentSlideIndex];
+      const timer = setTimeout(() => {
+        setCurrentSlideIndex((prev) => (prev + 1) % slides.length);
+      }, slide.duration * 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [currentSlideIndex, slides]);
 
   return (
     <div className="h-screen bg-black text-white flex flex-col">
