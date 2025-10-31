@@ -36,12 +36,8 @@ const Signage = () => {
       gsap.to('.progress-bar', { width: '100%', duration: slide.duration, ease: 'none' });
       // Animate slide in
       gsap.fromTo('.slide-content', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 });
-    }
-  }, [currentSlideIndex, slides]);
-
-  useEffect(() => {
-    if (slides.length > 0) {
-      const slide = slides[currentSlideIndex];
+      
+      // Auto-advance to next slide
       const timer = setTimeout(() => {
         setCurrentSlideIndex((prev) => (prev + 1) % slides.length);
       }, slide.duration * 1000);
