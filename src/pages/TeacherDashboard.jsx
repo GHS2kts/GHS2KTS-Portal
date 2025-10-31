@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { db } from '../firebase';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 
 const TeacherDashboard = () => {
-  const [totalStudents, setTotalStudents] = useState(30);
+  const [totalStudents] = useState(30);
   const [absent, setAbsent] = useState(0);
   const [leave, setLeave] = useState(0);
   const [off, setOff] = useState(0);
